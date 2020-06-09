@@ -104,6 +104,11 @@ config KMETER1
 	help
 	  This enables support for the Keymile KMETER1 board.
 
+config MERU_AP320
+	bool "Meru Networks AP320"
+	select PPC_MPC834x
+	help
+	  This enables support for the Meru Networks AP320.
 
 endif
 
