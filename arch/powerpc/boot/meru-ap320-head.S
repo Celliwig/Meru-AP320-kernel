@@ -14,25 +14,25 @@
 _zimage_start:
 	// HID0: d000
 	// Turn off data/instruction cache, data cache lock
-	li	r4, 0x0
+	li	r20, 0x0
 	sync
 	isync
-	mtspr	SPRN_HID0, r4
+	mtspr	SPRN_HID0, r20
 	isync
 
 	// MSR: b002
 	// Disable External interrupts
-	li	r4, 0x3002
-	mtmsr	r4
+	li	r20, 0x3002
+	mtmsr	r20
 	sync
 
 	// WDT cfg: ffff0007
 	// Reset WDT
-	lis	r9, -0x2000
-	ori	r9, r9, 0x20e
-	lis	r10, 0x556c
-	stw	r10, 0(r9)
-	lis	r10, -0x55c7
-	stw	r10, 0(r9)
+	lis	r20, -0x2000
+	ori	r20, r20, 0x20e
+	lis	r21, 0x556c
+	stw	r21, 0(r20)
+	lis	r21, -0x55c7
+	stw	r21, 0(r20)
 
 	b	_zimage_start_lib
