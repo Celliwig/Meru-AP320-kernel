@@ -289,8 +289,11 @@ cuboot*)
     *-mpc824*)
         platformo=$object/cuboot-824x.o
         ;;
-    *-mpc83*|*-asp834x*|*-meru-ap320*)
+    *-mpc83*|*-asp834x*)
         platformo=$object/cuboot-83xx.o
+        ;;
+    *-meru-ap320*)
+        platformo="$object/meru-ap320-head.o $object/cuboot-83xx.o"
         ;;
     *-tqm8541|*-mpc8560*|*-tqm8560|*-tqm8555|*-ksi8560*)
         platformo=$object/cuboot-85xx-cpm2.o

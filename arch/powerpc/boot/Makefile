@@ -325,7 +325,7 @@ image-$(CONFIG_MPC834x_ITX)		+= cuImage.mpc8349emitx \
 image-$(CONFIG_MPC834x_MDS)		+= cuImage.mpc834x_mds
 image-$(CONFIG_MPC836x_MDS)		+= cuImage.mpc836x_mds
 image-$(CONFIG_ASP834x)			+= dtbImage.asp834x-redboot
-image-$(CONFIG_MERU_AP320)		+= simpleImage.meru-ap320
+image-$(CONFIG_MERU_AP320)		+= cuImage.meru-ap320
 
 # Board ports in arch/powerpc/platform/85xx/Kconfig
 image-$(CONFIG_MPC8540_ADS)		+= cuImage.mpc8540ads
