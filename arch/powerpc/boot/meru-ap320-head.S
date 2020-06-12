@@ -27,10 +27,12 @@ _zimage_start:
 	sync
 
 	// WDT cfg: ffff0007
-	// Disable WDT
-	//lis	r9, -0x2000
-	//ori	r9, r9, 0x204
-	//li	r10, 0
-	//stw	r10, 0(r9)
+	// Reset WDT
+	lis	r9, -0x2000
+	ori	r9, r9, 0x20e
+	lis	r10, 0x556c
+	stw	r10, 0(r9)
+	lis	r10, -0x55c7
+	stw	r10, 0(r9)
 
 	b	_zimage_start_lib
