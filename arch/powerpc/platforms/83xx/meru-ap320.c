@@ -15,6 +15,7 @@
 #include <asm/ipic.h>
 #include <asm/udbg.h>
 
+#include <sysdev/fsl_soc.h>
 #include "mpc83xx.h"
 
 /* ************************************************************************
@@ -24,6 +25,10 @@
  */
 static void __init meru_ap320_setup_arch(void)
 {
+	__be32 __iomem *wdt_reg_base = ioremap(get_immrbase() + 0x20e, 0xff);	// System Watchdog Service Register
+	iowrite32be(0x556C0000, wdt_reg_base);		// Reset watchdog
+	iowrite32be(0xAA390000, wdt_reg_base);
+
 	mpc83xx_setup_arch();
 	//mpc834x_usb_cfg();
 }
