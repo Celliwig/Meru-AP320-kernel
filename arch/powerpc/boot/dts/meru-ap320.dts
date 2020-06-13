@@ -7,6 +7,8 @@
 
 /dts-v1/;
 
+#include <dt-bindings/gpio/gpio.h>
+
 / {
 	model = "meru,ap320";
 	compatible = "meru,ap320", "meru,mpc8347";
@@ -165,6 +167,24 @@
 			compatible = "mpc83xx_wdt";
 			reg = <0x200 0x100>;
 		};
+
+		gpio0: gpio-controller@c00 {
+			#gpio-cells = <2>;
+			compatible = "fsl,mpc8349-gpio";
+			reg = <0xc00 0x100>;
+			interrupts = <74 0x8>;
+			interrupt-parent = <&ipic>;
+			gpio-controller;
+		};
+
+//		gpio1: gpio-controller@d00 {
+//			#gpio-cells = <2>;
+//			compatible = "fsl,mpc8349-gpio";
+//			reg = <0xd00 0x100>;
+//			interrupts = <75 0x8>;
+//			interrupt-parent = <&ipic>;
+//			gpio-controller;
+//		};
 
 		i2c@3000 {
 			#address-cells = <1>;
@@ -378,6 +398,44 @@
 			#interrupt-cells = <2>;
 			reg = <0x700 0x100>;
 			device_type = "ipic";
+		};
+
+		gpio-leds {
+			compatible = "gpio-leds";
+
+			// RF1
+			rf1_red {
+				label = "rf1_red";
+				gpios = <&gpio0 2 GPIO_ACTIVE_LOW>;
+			};
+			rf1_green {
+				label = "rf1_green";
+				gpios = <&gpio0 3 GPIO_ACTIVE_LOW>;
+			};
+
+			// RF2
+			rf2_red {
+				label = "rf2_red";
+				gpios = <&gpio0 4 GPIO_ACTIVE_LOW>;
+			};
+			rf2_green {
+				label = "rf2_green";
+				gpios = <&gpio0 5 GPIO_ACTIVE_LOW>;
+			};
+
+			// Status
+			status_green {
+				label = "status_green";
+				gpios = <&gpio0 6 GPIO_ACTIVE_LOW>;
+			};
+			status_red {
+				label = "status_red";
+				gpios = <&gpio0 7 GPIO_ACTIVE_LOW>;
+			};
+			status_blue {
+				label = "status_blue";
+				gpios = <&gpio0 8 GPIO_ACTIVE_LOW>;
+			};
 		};
 	};
 
