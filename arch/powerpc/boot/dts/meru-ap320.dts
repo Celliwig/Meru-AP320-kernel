@@ -67,14 +67,84 @@
 		interrupt-parent = <&ipic>;
 
 		ranges = <
-			0 0 0xa0000000 0x02000000
+			0 0 0xff000000 0x01000000
 		>;
 
 		flash@0,0 {
-			compatible = "cfi-flash";
-			reg = <0 0 0x02000000>;
-			bank-width = <2>;
-			device-width = <2>;
+			compatible = "spansion,s29gl128n", "cfi-flash";
+			reg = <0 0 0x01000000>;
+			bank-width = <1>;
+			device-width = <1>;
+			#address-cells = <1>;
+			#size-cells = <1>;
+
+			// 0x00000000-0x00020000 (hrcw)
+			partition@0 {
+				label = "hrcw";
+				reg = <0x00000000 0x20000>;		// 128k
+				read-only;
+				lock;
+			};
+			// 0x00020000-0x00040000 (manuf0)
+			partition@1 {
+				label = "manuf0";
+				reg = <0x00020000 0x20000>;		// 128k
+				read-only;
+				lock;
+			};
+			// 0x00040000-0x00080000 (config0)
+			partition@2 {
+				label = "config0";
+				reg = <0x00040000 0x40000>;		// 256k
+				read-only;
+				lock;
+			};
+			// 0x00080000-0x000a0000 (logk0)
+			partition@3 {
+				label = "logk0";
+				reg = <0x00080000 0x20000>;		// 128k
+			};
+			// 0x000a0000-0x000c0000 (logk1)
+			partition@4 {
+				label = "logk1";
+				reg = <0x000a0000 0x20000>;		// 128k
+			};
+			// 0x000c0000-0x00180000 (user0)
+			partition@5 {
+				label = "user0";
+				reg = <0x000c0000 0xc0000>;		// 768k
+			};
+			// 0x00500000-0x00a00000 (runtime0)
+			partition@6 {
+				label = "runtime0";
+				reg = <0x00500000 0x500000>;		// 5M
+			};
+			// 0x00a00000-0x00f00000 (runtime1)
+			partition@7 {
+				label = "runtime1";
+				reg = <0x00a00000 0x500000>;		// 5M
+			};
+			// 0x00f00000-0x00fc0000 (boot0)
+			partition@8 {
+				label = "boot0";
+				reg = <0x00f00000 0xc0000>;		// 768k
+				read-only;
+				lock;
+			};
+			// 0x00fc0000-0x00fe0000 (env0)
+			partition@9 {
+				label = "env0";
+				reg = <0x00fc0000 0x20000>;		// 128k
+				read-only;
+				lock;
+			};
+			// 0x00fe0000-0x01000000 (env1)
+			partition@10 {
+				label = "env1";
+				reg = <0x00fe0000 0x20000>;		// 128k
+				read-only;
+				lock;
+			};
 		};
 	};
 
