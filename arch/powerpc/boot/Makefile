@@ -148,7 +148,7 @@ src-plat-$(CONFIG_44x) += treeboot-ebony.c cuboot-ebony.c treeboot-bamboo.c \
 src-plat-$(CONFIG_PPC_8xx) += cuboot-8xx.c fixed-head.S ep88xc.c redboot-8xx.c
 src-plat-$(CONFIG_PPC_MPC52xx) += cuboot-52xx.c
 src-plat-$(CONFIG_PPC_82xx) += cuboot-pq2.c fixed-head.S ep8248e.c cuboot-824x.c
-src-plat-$(CONFIG_PPC_83xx) += cuboot-83xx.c fixed-head.S redboot-83xx.c simpleboot.c meru-ap320-head.S
+src-plat-$(CONFIG_PPC_83xx) += cuboot-83xx.c fixed-head.S redboot-83xx.c
 src-plat-$(CONFIG_FSL_SOC_BOOKE) += cuboot-85xx.c cuboot-85xx-cpm2.c
 src-plat-$(CONFIG_EMBEDDED6xx) += cuboot-pq2.c cuboot-mpc7448hpc2.c \
 					gamecube-head.S gamecube.c \
@@ -325,7 +325,7 @@ image-$(CONFIG_MPC834x_ITX)		+= cuImage.mpc8349emitx \
 image-$(CONFIG_MPC834x_MDS)		+= cuImage.mpc834x_mds
 image-$(CONFIG_MPC836x_MDS)		+= cuImage.mpc836x_mds
 image-$(CONFIG_ASP834x)			+= dtbImage.asp834x-redboot
-image-$(CONFIG_MERU_AP320)		+= cuImage.meru-ap320
+image-$(CONFIG_MERU_AP320)		+= uImage.initrd.meru-ap320
 
 # Board ports in arch/powerpc/platform/85xx/Kconfig
 image-$(CONFIG_MPC8540_ADS)		+= cuImage.mpc8540ads

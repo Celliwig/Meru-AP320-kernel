@@ -292,9 +292,6 @@ cuboot*)
     *-mpc83*|*-asp834x*)
         platformo=$object/cuboot-83xx.o
         ;;
-    *-meru-ap320*)
-        platformo="$object/meru-ap320-head.o $object/cuboot-83xx.o"
-        ;;
     *-tqm8541|*-mpc8560*|*-tqm8560|*-tqm8555|*-ksi8560*)
         platformo=$object/cuboot-85xx-cpm2.o
         ;;
@@ -324,10 +321,6 @@ ep88xc|ep405|ep8248e)
     ;;
 adder875-redboot)
     platformo="$object/fixed-head.o $object/redboot-8xx.o"
-    binary=y
-    ;;
-simpleboot-meru-ap320*)
-    platformo="$object/meru-ap320-head.o $object/simpleboot.o"
     binary=y
     ;;
 simpleboot-virtex405-*)
@@ -454,7 +447,7 @@ uboot)
     fi
     exit 0
     ;;
-uboot-obs600)
+uboot-obs600|uboot-meru-ap320)
     rm -f "$ofile"
     # obs600 wants a multi image with an initrd, so we need to put a fake
     # one in even when building a "normal" image.
